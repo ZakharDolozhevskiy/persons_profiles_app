@@ -1,0 +1,6 @@
+.person-item {
+  cursor: pointer;
+}
+.person-item.active {
+  color: red;
+}

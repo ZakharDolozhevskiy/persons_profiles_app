@@ -1,3 +1,6 @@
-//
-   Created by Zakhar on 12.05.17.
-
+if user.activated
+    img(src=user.icon_url class='user-widget-icon')
+    strong.user-name #{user.name}
+    span.user-company #{user.email}
+else
+    span loading...

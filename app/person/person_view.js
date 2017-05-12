@@ -1,22 +1,38 @@
-import $ from 'jquery';
 import Backbone from 'backbone';
 import template from './template.pug';
+import './styles.css';
 
 export default Backbone.View.extend({
   template: template,
 
-  tagName: 'div',
+  tagName: 'li',
 
-  el: '',
+  className: 'person-item',
 
-  className: '',
-
-  events: {},
-
-  initialize: function () {
+  events: {
+    'click': 'onClick'
   },
 
-  render: function () {
-    this.$el.html(this.template({ name: 'Zakhar' }));
+  initialize() {
+    this.listenTo(this.model, 'change:isSelected', this.onSelect)
+  },
+
+  render() {
+    let payload = { person: this.model.attributes };
+    this.$el.html(this.template(payload));
+
+    if (this.model.attributes.isSelected) {
+      this.$el.addClass('active');
+    }
+  },
+
+  onClick() {
+    this.model.set({ isSelected: true });
+  },
+
+  onSelect(personModel) {
+    personModel.attributes.isSelected
+      ? this.$el.addClass('active')
+      : this.$el.removeClass('active');
   }
 });

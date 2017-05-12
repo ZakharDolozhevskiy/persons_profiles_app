@@ -1,6 +1,6 @@
 export default {
   api: {
-    token: 'e984abb643205c8eb5b13a8c04ad31398eef6291',
+    token: 'd771acde8bb6547ba5b191936ef26073befa9716',
     endpoint: 'https://api.pipedrive.com/v1'
   }
 }

@@ -1,25 +1,36 @@
 import Backbone from 'backbone';
-import ProfilesCollection from './profiles/profiles-collection';
-import ProfilesView from './profiles/profiles-view';
+
+import AppView from './layout/header_view';
+import PersonsView from './persons/persons_view';
+import PersonDetailsView from './person_details/person_details_view';
+
+import PersonsCollection from './persons/persons_collection';
+import PersonDetailsModel from './person_details/person_details_model';
 
 export default Backbone.Router.extend({
   routes: {
     '': 'root',
-    'profiles(/:id)': 'profiles',
-    'profiles/:uid': 'editProfile',
+    'persons(/:id)': 'persons',
+    '*notFound': 'defaultRoute'
   },
   root: function() {
-    this.navigate('profiles', {trigger: true});
+    this.navigate('persons', { trigger: true });
   },
-  profiles: function(profileId) {
-    new ProfilesView().render();
-    let collection = new ProfilesCollection();
-    collection.activeProfileId = profileId;
-    collection.fetch();
-    collection.on('add', function(m) { console.log(m); });
-    console.log(profileId);
+  persons(profileId) {
+    new AppView().render();
+
+    new PersonsView({
+      collection: new PersonsCollection(profileId)
+    }).render();
+
+
+
+    //const personDetails = new PersonDetailsModel({ activeProfile: profileId });
+
+
+    //new PersonDetailsView({ model: personDetails });
   },
-  editProfile: function(profileId) {
-    console.log(profileId);
+  defaultRoute() {
+    this.navigate('', { trigger: true });
   }
 });

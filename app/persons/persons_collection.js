@@ -5,5 +5,35 @@ import { api } from '../config';
 export default Backbone.Collection.extend({
   url: `${api.endpoint}/persons?start=0&api_token=${api.token}`,
   model: PersonModel,
-  parse: response => response.data
+  defaultSelectedPerson: null,
+
+  initialize(personId) {
+    this.defaultSelectedPerson = +personId;
+    this.listenTo(this, 'change:isSelected', this.onSelect);
+    this.fetch();
+  },
+
+  parse(response) {
+    if (this.defaultSelectedPerson) {
+      let person = response.data.find(person => person.id === this.defaultSelectedPerson);
+      if (person) { person.isSelected = true; }
+    }
+
+    return response.data;
+  },
+
+  onSelect(personModel) {
+    if (personModel.attributes.isSelected) {
+      this.resetPrevSelection(personModel.id);
+      Backbone.history.navigate(`persons/${personModel.id}`,{trigger:true});
+    }
+  },
+
+  resetPrevSelection(selectedPersonId) {
+    this.forEach(function(model) {
+      if (selectedPersonId !== model.id && model.attributes.isSelected) {
+        model.set({ isSelected: false });
+      }
+    })
+  }
 });
