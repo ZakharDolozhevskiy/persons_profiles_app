@@ -1,0 +1,25 @@
+section
+    header
+        h1 #{person.name}
+        h3 Deals
+    main
+        ul
+            li
+                strong Phone
+                span #{person.phone[0].value}
+            li
+                strong E-mail
+                span #{person.email[0].value}
+            li
+                strong Added
+                span #{person.add_time}
+            li
+                strong Open deals
+                span #{person.open_deals_count}
+            li
+                strong Next activity
+                span TBD
+            li
+                strong Last activity
+                span TBD
+        div#person-deals

@@ -25,7 +25,7 @@ export default Backbone.Collection.extend({
   onSelect(personModel) {
     if (personModel.attributes.isSelected) {
       this.resetPrevSelection(personModel.id);
-      Backbone.history.navigate(`persons/${personModel.id}`,{trigger:true});
+      this.trigger('person:selected', personModel.id);
     }
   },
 
