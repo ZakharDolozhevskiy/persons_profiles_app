@@ -1,0 +1,15 @@
+@import "reset.css";
+@import "fonts.css";
+@import "spinner.css";
+
+body {
+  background:
+    url('../assets/images/p.png') no-repeat center,
+    url('../assets/images/taust.png') repeat;
+}
+
+#app {
+  min-width: 780px;
+  display: flex;
+  flex-wrap: wrap;
+}

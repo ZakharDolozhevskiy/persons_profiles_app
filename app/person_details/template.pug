@@ -1,5 +1,7 @@
-if isLoading
-    span loading...
+if isFetchError
+    span User doesn't exits
+else if isLoading
+    div.spinner
 else
     section.person-details
         header

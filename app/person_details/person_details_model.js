@@ -19,29 +19,51 @@ export default Backbone.Model.extend({
     let id = this.attributes.personId;
     let promises = [];
 
+    this.onFetchStart();
+
     promises.push(fetch(`${api.endpoint}/persons/${id}?api_token=${api.token}`)
       .then(this.toJSON)
-      .then(payload => this.set({ info: payload.data })));
+      .then(payload => this.set({ info: payload.data }))
+    );
 
     promises.push(fetch(`${api.endpoint}/persons/${id}/deals/?api_token=${api.token}`)
       .then(this.toJSON)
-      .then(payload => this.set({ deals: payload.data })));
+      .then(payload => this.set({ deals: payload.data }))
+    );
 
     promises.push(fetch(`${api.endpoint}/persons/${id}/activities/?api_token=${api.token}`)
       .then(this.toJSON)
-      .then(payload => this.set({ activities: payload.data })));
+      .then(payload => this.set({ activities: payload.data }))
+    );
 
     Promise.all(promises)
-      .then(() => this.trigger('fetch:done'))
-      .catch(this.onFetchError);
+      .then(() => this.onFetchDone())
+      .catch(() => this.onFetchError());
   },
 
-  onFetchError(err) {
-    return console.warn(err);
+  onFetchStart() {
+    this.attributes.isLoading = true;
+    this.trigger('fetch:start')
+  },
+
+  onFetchDone() {
+    this.attributes.fetchError = false;
+    this.attributes.isLoading = false;
+    this.trigger('fetch:done')
+  },
+
+  onFetchError() {
+    this.attributes.fetchError = true;
+    this.attributes.isLoading = false;
+    this.trigger('fetch:error');
   },
 
   toJSON(response) {
-    return response.json();
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Network response was not ok.');
+    }
   },
 
   findActivityById(id) {

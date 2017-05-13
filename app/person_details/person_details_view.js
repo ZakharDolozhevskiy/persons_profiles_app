@@ -7,7 +7,9 @@ export default Backbone.View.extend({
   template: template,
 
   initialize() {
+    this.listenTo(this.model, 'fetch:start', this.render);
     this.listenTo(this.model, 'fetch:done', this.render);
+    this.listenTo(this.model, 'fetch:error', this.render);
     this.listenTo(this.model, 'change:personId', this.render);
   },
 
@@ -19,9 +21,10 @@ export default Backbone.View.extend({
       formatDate: this.formatDate,
       getLastActivity: this.getLastActivity.bind(this),
       getNextActivity: this.getNextActivity.bind(this),
-      isLoading: !attr.info || !attr.deals,
+      isLoading:  attr.isLoading,
+      isFetchError: attr.fetchError
     };
-
+    console.log(attr.fetchError);
     this.$el.html(this.template(payload));
   },
 

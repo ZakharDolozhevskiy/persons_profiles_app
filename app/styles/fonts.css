@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'LucidaGrande';
+  src: url('../assets/fonts/LucidaGrande.eot?#iefix') format('embedded-opentype'),
+  url('../assets/fonts/LucidaGrande.woff') format('woff'),
+  url('../assets/fonts/LucidaGrande.ttf')  format('truetype'),
+  url('../assets/fonts/LucidaGrande.svg#LucidaGrande') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LucidaGrande-Bold';
+  src: url('../assets/fonts/LucidaGrande-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../assets/fonts/LucidaGrande-Bold.woff') format('woff'),
+  url('../assets/fonts/LucidaGrande-Bold.ttf')  format('truetype'),
+  url('../assets/fonts/LucidaGrande-Bold.svg#LucidaGrande-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo-700';
+  src: url('../assets/fonts/Museo-700.eot?#iefix') format('embedded-opentype'),
+  url('../assets/fonts/Museo-700.otf')  format('opentype'),
+  url('../assets/fonts/Museo-700.woff') format('woff'),
+  url('../assets/fonts/Museo-700.ttf')  format('truetype'),
+  url('../assets/fonts/Museo-700.svg#Museo-700') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
