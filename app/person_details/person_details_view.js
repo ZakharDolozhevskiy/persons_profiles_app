@@ -1,6 +1,7 @@
 import Backbone from 'backbone';
 import moment from 'moment';
 import template from './template.pug';
+import './person_details.css';
 
 export default Backbone.View.extend({
   template: template,

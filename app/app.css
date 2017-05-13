@@ -19,8 +19,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Museo-700';
+  src: url('./assets/fonts/Museo-700.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Museo-700.otf')  format('opentype'),
+  url('./assets/fonts/Museo-700.woff') format('woff'),
+  url('./assets/fonts/Museo-700.ttf')  format('truetype'),
+  url('./assets/fonts/Museo-700.svg#Museo-700') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 /*
-  Reset default css rules
+  Reset css section start
 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -65,4 +77,22 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+html, body, #app {
+  height: 100%;
+}
+/*
+  Reset css section end
+*/
+
+body {
+  background:
+    url('./assets/images/p.png') no-repeat center,
+    url('./assets/images/taust.png') repeat;
+}
+
+#app {
+  min-width: 780px;
+  display: flex;
+  flex-wrap: wrap;
 }

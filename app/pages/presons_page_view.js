@@ -1,7 +1,7 @@
 import Backbone from 'backbone';
 import HeaderView from '../layout/header_view';
-
 import template from './presons_page_template.pug';
+import './presons_page.css'
 
 export default Backbone.View.extend({
   template: template,

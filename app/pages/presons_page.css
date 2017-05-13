@@ -1,0 +1,28 @@
+#header {
+  display: flex;
+  height: 46px;
+  line-height: 46px;
+  width: 100%;
+  padding: 0 10px 0 5px;
+  background-color: #343434;
+  border-bottom: 1px solid #0f0f0f;
+}
+
+#header a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+#right_nav {
+  width: 280px;
+  /* 46px - header height, 1px - header border width */
+  height: calc(100% - 46px + 1px);
+  border-right: 1px solid #b3b3b3;
+  background-color: white;
+}
+
+#main {
+  flex-grow: 1;
+  padding: 20px 36px 0 20px;
+}

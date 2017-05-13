@@ -1,0 +1,109 @@
+.person-details header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  font-family: 'Museo-700';
+}
+
+.person-details-name-title {
+  width: 50%;
+  font-size: 24px;
+}
+
+.person-details-deals-title {
+  width: 50%;
+  font-size: 18px;
+}
+
+.person-details .content {
+  box-sizing: border-box;
+  display: flex;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px #aaa;
+}
+
+.person-details-deals,
+.person-details-info {
+  width: 50%;
+}
+
+.person-details-info li {
+  display: flex;
+  align-items: flex-start;
+  height: 24px;
+}
+
+.person-details-info .title {
+  display: inline-block;
+  font: 12px 'LucidaGrande-Bold';
+  width: 125px;
+}
+
+.person-details-info .value {
+  font-size: 12px;
+}
+
+.person-details-deals {
+  padding: 3px 7px 0 10px;
+}
+
+.person-details-deals ul {
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 1px 1px #aaa;
+}
+
+.person-details-deals li {
+  display: flex;
+  height: 29px;
+  padding: 0 15px;
+  align-items: center;
+  font: 12px 'LucidaGrande-Bold';
+  justify-content: space-between;
+}
+
+.person-details-deals li:not(:last-child) {
+  border-bottom: 1px solid #bbb;
+}
+
+.person-details-deals li:nth-child(odd) {
+  background: linear-gradient(to bottom, #f3f3f3 0%,#eaeaea 100%);
+}
+
+.person-details-deals li.caption {
+  background: linear-gradient(to bottom, #ffffff 0%,#f0f0f0 100%);
+}
+
+.inner-deals-title {
+  display: none;
+  width: 100%;
+  padding: 18px 0 14px;
+  font-size: 18px;
+  font-family: 'Museo-700';
+}
+
+@media (max-width: 1100px) {
+  .person-details-deals-title {
+    display: none;
+  }
+
+  .person-details-deals {
+    padding: 0;
+  }
+
+  .person-details .content {
+    flex-direction: column;
+  }
+
+  .person-details-deals,
+  .person-details-info {
+    width: 100%;
+  }
+
+  .inner-deals-title {
+    display: block;
+  }
+}

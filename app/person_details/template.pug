@@ -1,32 +1,36 @@
 if isLoading
     span loading...
 else
-    section
+    section.person-details
         header
-            h1 #{person.name}
-            h3 Deals
-        main
-            ul.person-info
+            h1.person-details-name-title #{person.name}
+            h3.person-details-deals-title Deals
+        main.content
+            ul.person-details-info
                 li
-                    strong Phone
-                    span #{person.phone[0].value}
+                    strong.title Phone
+                    span.value #{person.phone[0].value}
                 li
-                    strong E-mail
-                    span #{person.email[0].value}
+                    strong.title E-mail
+                    span.value #{person.email[0].value}
                 li
-                    strong Added
-                    span #{formatDate(person.add_time)}
+                    strong.title Added
+                    span.value #{formatDate(person.add_time)}
                 li
-                    strong Open deals
-                    span #{person.open_deals_count}
+                    strong.title Open deals
+                    span.value #{person.open_deals_count}
                 li
-                    strong Next activity
-                    span #{getNextActivity(person.next_activity_id)}
+                    strong.title Next activity
+                    span.value #{getNextActivity(person.next_activity_id)}
                 li
-                    strong Last activity
-                    span #{getLastActivity(person.last_activity_id)}
-            div.person-deals
+                    strong.title Last activity
+                    span.value #{getLastActivity(person.last_activity_id)}
+            div.person-details-deals
+                span.inner-deals-title Deals
                 ul
+                    li.caption
+                        strong.title Title
+                        strong.title Sum
                     each deal in deals
                         li
                             span.deal-title #{deal.title}
