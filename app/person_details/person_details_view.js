@@ -4,6 +4,8 @@ import template from './template.pug';
 import './person_details.css';
 
 export default Backbone.View.extend({
+  el: '#main',
+
   template: template,
 
   initialize() {
@@ -11,6 +13,7 @@ export default Backbone.View.extend({
     this.listenTo(this.model, 'fetch:done', this.render);
     this.listenTo(this.model, 'fetch:error', this.render);
     this.listenTo(this.model, 'change:personId', this.render);
+    this.listenTo(this.model, 'reset', this.reset);
   },
 
   render() {
@@ -26,6 +29,10 @@ export default Backbone.View.extend({
     };
 
     this.$el.html(this.template(payload));
+  },
+
+  reset() {
+    this.$el.text('Select person for more details');
   },
 
   formatDate(date) {

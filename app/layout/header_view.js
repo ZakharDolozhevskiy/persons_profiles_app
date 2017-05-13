@@ -7,6 +7,8 @@ import './header.css';
 export default Backbone.View.extend({
   template: template,
 
+  el: '#header',
+
   render() {
     this.$el.html(this.template());
     this.renderWidgets();

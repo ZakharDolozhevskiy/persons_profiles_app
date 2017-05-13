@@ -7,23 +7,20 @@ export default Backbone.Collection.extend({
   model: PersonModel,
   defaultSelectedPerson: null,
 
-  initialize(personId) {
-    this.defaultSelectedPerson = +personId;
+  initialize() {
     this.listenTo(this, 'change:isSelected', this.onSelect);
-
     this.fetch();
   },
 
   parse(response) {
-    if (this.defaultSelectedPerson) {
+    if (this.defaultSelectedId) {
       let person = response.data.find(
-        person => person.id === this.defaultSelectedPerson);
+        person => person.id === this.defaultSelectedId);
 
       if (person) {
         person.isSelected = true;
       }
     }
-
     return response.data;
   },
 
@@ -31,6 +28,15 @@ export default Backbone.Collection.extend({
     if (personModel.attributes.isSelected) {
       this.resetPrevSelection(personModel.id);
       this.trigger('person:selected', personModel.id);
+    }
+  },
+
+  selectPersonById(id) {
+    if (this.length === 0) {
+      this.defaultSelectedId = id;
+    } else {
+      let person = this.get(id);
+      person && person.set({ isSelected: true });
     }
   },
 

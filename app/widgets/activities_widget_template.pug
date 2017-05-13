@@ -1,4 +1,5 @@
 div(class='header-activities-widget')
     span Activities
     span.date #{model.currentDay}
-    span.deals-amount #{model.activities}
+    if model.activities
+        span.deals-amount #{model.activities}

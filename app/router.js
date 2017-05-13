@@ -1,11 +1,10 @@
 import Backbone from 'backbone';
-import PersonsView from './persons/persons_view';
-import PersonsPageView from './pages/presons_page_view';
-import PersonsCollection from './persons/persons_collection';
-import PersonDetailsView from './person_details/person_details_view';
-import PersonDetailsModel from './person_details/person_details_model';
+import PersonsPageView from './pages/persons_page_view';
+import PersonsPageModel from './pages/persons_page_model';
 
 export default Backbone.Router.extend({
+  activeRoute: '',
+  activePageModel: null,
   routes: {
     '': 'root',
     'persons(/:id)': 'persons',
@@ -15,17 +14,13 @@ export default Backbone.Router.extend({
     this.navigate('persons', { trigger: true });
   },
   persons(personId) {
-    const persons = new PersonsCollection(personId);
-    const personDetails = new PersonDetailsModel(personId);
+    if (this.activeRoute !== 'persons') {
+      this.activeRoute = 'persons';
+      this.activePageModel = new PersonsPageModel();
+      new PersonsPageView({ model: this.activePageModel }).render();
+    }
 
-    new PersonsPageView({ el: '#app' }).render();
-    new PersonDetailsView({ model: personDetails, el: '#main' });
-    new PersonsView({ collection: persons, el: '#right_nav' }).render();
-
-    this.listenTo(persons, 'person:selected', function(personId) {
-      personDetails.set({ personId });
-      this.navigate(`persons/${personId}`);
-    })
+    this.activePageModel.trigger('router:change:id', personId);
   },
   defaultRoute() {
     this.navigate('', { trigger: true });

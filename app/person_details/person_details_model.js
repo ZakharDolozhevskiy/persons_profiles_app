@@ -69,5 +69,9 @@ export default Backbone.Model.extend({
   findActivityById(id) {
     let activities = this.attributes.activities;
     return activities.find(activity => activity.id === id);
+  },
+
+  reset() {
+    this.trigger('reset');
   }
 });
