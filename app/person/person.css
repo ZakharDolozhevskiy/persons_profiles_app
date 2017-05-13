@@ -1,6 +1,6 @@
 .person-item {
   cursor: pointer;
-  padding: 10px 0 7px 12px;
+  padding: 10px 0 6px 12px;
   border-bottom: 1px solid #d6d6d6;
   background: linear-gradient(180deg, #ffffff 0%, #f6f6f6 100%);
 }

@@ -18,6 +18,7 @@ export default Backbone.View.extend({
 
   render() {
     let attr = this.model.attributes;
+
     let payload = {
       person: attr.info,
       deals: attr.deals,
@@ -41,13 +42,11 @@ export default Backbone.View.extend({
 
   getLastActivity(activityId) {
     let activity = this.model.findActivityById(activityId);
-
     return `${activity.subject} ${moment(activity.due_date).fromNow()}`;
   },
 
   getNextActivity(activityId) {
     let activity = this.model.findActivityById(activityId);
-
     return `${activity.subject} ${moment(activity.due_date).fromNow()}`;
   },
 });

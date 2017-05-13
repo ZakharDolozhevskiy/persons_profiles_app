@@ -1,7 +1,7 @@
 .person-details header {
   display: flex;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 14px;
   font-family: 'Museo-700';
 }
 
@@ -18,7 +18,7 @@
 .person-details .content {
   box-sizing: border-box;
   display: flex;
-  padding: 15px;
+  padding: 15px 15px -0;
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0 2px 5px #aaa;
@@ -27,6 +27,7 @@
 .person-details-deals,
 .person-details-info {
   width: 50%;
+  padding-top: 3px;
 }
 
 .person-details-info li {
@@ -59,7 +60,7 @@
 .person-details-deals li {
   display: flex;
   height: 29px;
-  padding: 0 15px;
+  padding: 0 11px 0 12px;
   align-items: center;
   font: 12px 'LucidaGrande-Bold';
   justify-content: space-between;

@@ -16,8 +16,8 @@
 
 #right_nav {
   width: 280px;
-  /* 46px - header height, 1px - header border width */
-  height: calc(100% - 46px + 1px);
+  /* 48px - header height, 1px - border width */
+  height: calc(100% - 48px + 1px);
   border-right: 1px solid #b3b3b3;
   background-color: white;
 }

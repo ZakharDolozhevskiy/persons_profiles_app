@@ -21,7 +21,7 @@ export default Backbone.View.extend({
     userWidgetView.render();
     activitiesWidgetView.render();
 
-    this.$el.find('.deals-widget').before(activitiesWidgetView.el);
+    this.$el.find('.header-profile-widget').before(activitiesWidgetView.el);
     this.$el.append(userWidgetView.el);
   }
 });
