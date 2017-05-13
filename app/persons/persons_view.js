@@ -1,20 +1,15 @@
 import Backbone from 'backbone';
-
 import template from './template.pug';
 import PersonView from '../person/person_view';
 
 export default Backbone.View.extend({
-  el: '#right_nav',
-
-  events: {},
-
   template: template,
 
-  initialize: function () {
+  initialize() {
     this.listenTo(this.collection, 'add', this.addPerson);
   },
 
-  render: function () {
+  render() {
     this.$el.html(this.template());
   },
 

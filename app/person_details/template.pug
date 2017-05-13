@@ -1,0 +1,33 @@
+if isLoading
+    span loading...
+else
+    section
+        header
+            h1 #{person.name}
+            h3 Deals
+        main
+            ul.person-info
+                li
+                    strong Phone
+                    span #{person.phone[0].value}
+                li
+                    strong E-mail
+                    span #{person.email[0].value}
+                li
+                    strong Added
+                    span #{formatDate(person.add_time)}
+                li
+                    strong Open deals
+                    span #{person.open_deals_count}
+                li
+                    strong Next activity
+                    span #{getNextActivity(person.next_activity_id)}
+                li
+                    strong Last activity
+                    span #{getLastActivity(person.last_activity_id)}
+            div.person-deals
+                ul
+                    each deal in deals
+                        li
+                            span.deal-title #{deal.title}
+                            span.deal-price #{deal.value} #{deal.currency}

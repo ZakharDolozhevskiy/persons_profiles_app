@@ -10,13 +10,18 @@ export default Backbone.Collection.extend({
   initialize(personId) {
     this.defaultSelectedPerson = +personId;
     this.listenTo(this, 'change:isSelected', this.onSelect);
+
     this.fetch();
   },
 
   parse(response) {
     if (this.defaultSelectedPerson) {
-      let person = response.data.find(person => person.id === this.defaultSelectedPerson);
-      if (person) { person.isSelected = true; }
+      let person = response.data.find(
+        person => person.id === this.defaultSelectedPerson);
+
+      if (person) {
+        person.isSelected = true;
+      }
     }
 
     return response.data;

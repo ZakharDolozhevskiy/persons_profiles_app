@@ -1,6 +1,6 @@
 import Backbone from 'backbone';
-import AppView from './layout/header_view';
 import PersonsView from './persons/persons_view';
+import PersonsPageView from './pages/presons_page_view';
 import PersonsCollection from './persons/persons_collection';
 import PersonDetailsView from './person_details/person_details_view';
 import PersonDetailsModel from './person_details/person_details_model';
@@ -11,19 +11,20 @@ export default Backbone.Router.extend({
     'persons(/:id)': 'persons',
     '*notFound': 'defaultRoute'
   },
-  root: function() {
+  root() {
     this.navigate('persons', { trigger: true });
   },
   persons(personId) {
-    const personsCollection = new PersonsCollection(personId);
-    const personDetailsModel = new PersonDetailsModel(personId);
+    const persons = new PersonsCollection(personId);
+    const personDetails = new PersonDetailsModel(personId);
 
-    new AppView().render();
-    new PersonsView({ collection: personsCollection }).render();
-    new PersonDetailsView({ model: personDetailsModel }).render();
+    new PersonsPageView({ el: '#app' }).render();
+    new PersonDetailsView({ model: personDetails, el: '#main' });
+    new PersonsView({ collection: persons, el: '#right_nav' }).render();
 
-    this.listenTo(personsCollection, 'person:selected', function(personId) {
-      personDetailsModel.set({ personId });
+    this.listenTo(persons, 'person:selected', function(personId) {
+      personDetails.set({ personId });
+      this.navigate(`persons/${personId}`);
     })
   },
   defaultRoute() {

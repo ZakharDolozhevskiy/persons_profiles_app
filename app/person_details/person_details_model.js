@@ -17,15 +17,22 @@ export default Backbone.Model.extend({
 
   fetchPersonDetails() {
     let id = this.attributes.personId;
+    let promises = [];
 
-    fetch(`${api.endpoint}/persons/${id}?api_token=${api.token}`)
+    promises.push(fetch(`${api.endpoint}/persons/${id}?api_token=${api.token}`)
       .then(this.toJSON)
-      .then(payload => this.set({ info: payload.data }))
-      .catch(this.onFetchError);
+      .then(payload => this.set({ info: payload.data })));
 
-    fetch(`${api.endpoint}/persons/${id}/flow/?api_token=${api.token}`)
+    promises.push(fetch(`${api.endpoint}/persons/${id}/deals/?api_token=${api.token}`)
       .then(this.toJSON)
-      .then(payload => this.set({ deals: payload.data }))
+      .then(payload => this.set({ deals: payload.data })));
+
+    promises.push(fetch(`${api.endpoint}/persons/${id}/activities/?api_token=${api.token}`)
+      .then(this.toJSON)
+      .then(payload => this.set({ activities: payload.data })));
+
+    Promise.all(promises)
+      .then(() => this.trigger('fetch:done'))
       .catch(this.onFetchError);
   },
 
@@ -35,6 +42,10 @@ export default Backbone.Model.extend({
 
   toJSON(response) {
     return response.json();
-  }
+  },
 
+  findActivityById(id) {
+    let activities = this.attributes.activities;
+    return activities.find(activity => activity.id === id);
+  }
 });
