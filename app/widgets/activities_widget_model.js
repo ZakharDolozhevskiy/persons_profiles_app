@@ -5,17 +5,11 @@ import { api } from '../config';
 export default Backbone.Model.extend({
   url: `${api.endpoint}/activities?api_token=${api.token}`,
 
-  defaults: {
-    currentDay: moment().date(),
-  },
+  defaults: { currentDay: moment().date() },
 
-  initialize() {
-   this.fetch();
-  },
+  initialize() { this.fetch(); },
 
   parse(response) {
-    return {
-      activities: response.data.length
-    }
+    return { activities: response.data.length }
   },
 });

@@ -6,12 +6,6 @@
   "scripts": {
     "start": "webpack-dev-server"
   },
-  "browserslist": [
-    "ie >= 10",
-    "last 10 Chrome versions",
-    "last 10 ff versions",
-    "last 3 Safari versions"
-  ],
   "author": "Zakhar",
   "license": "MIT",
   "dependencies": {

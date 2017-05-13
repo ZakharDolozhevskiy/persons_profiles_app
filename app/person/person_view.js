@@ -26,9 +26,7 @@ export default Backbone.View.extend({
     }
   },
 
-  onClick() {
-    this.model.set({ isSelected: true });
-  },
+  onClick() { this.model.set({ isSelected: true }); },
 
   onSelect(personModel) {
     personModel.attributes.isSelected

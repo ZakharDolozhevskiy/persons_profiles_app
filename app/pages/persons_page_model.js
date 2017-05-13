@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import PersonsCollection from '../persons/persons_collection';
+import PersonsCollection from '../persons_list/persons_collection';
 import PersonDetailsModel from '../person_details/person_details_model';
 
 export default Backbone.Model.extend({

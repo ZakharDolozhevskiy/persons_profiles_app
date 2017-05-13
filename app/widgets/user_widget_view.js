@@ -4,9 +4,11 @@ import UserWidgetModel from './user_widget_model';
 import './user_widget.css';
 
 export default Backbone.View.extend({
-  className: 'user_widget',
-  template: template,
   tagName: 'div',
+
+  className: 'user_widget',
+
+  template: template,
 
   initialize() {
     this.model = new UserWidgetModel();

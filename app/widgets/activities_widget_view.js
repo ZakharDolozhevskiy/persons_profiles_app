@@ -4,8 +4,9 @@ import ActivitiesWidgetModel from './activities_widget_model';
 import './activities_widget.css';
 
 export default Backbone.View.extend({
-  template: template,
   tagName: 'a',
+
+  template: template,
 
   initialize() {
     this.model = new ActivitiesWidgetModel();

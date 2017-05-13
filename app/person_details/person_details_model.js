@@ -3,10 +3,6 @@ import fetch from 'isomorphic-fetch';
 import { api } from '../config';
 
 export default Backbone.Model.extend({
-  attributes: {
-    personId: null,
-  },
-
   initialize(personId) {
     this.listenTo(this, 'change:personId', this.fetchPersonDetails);
 
@@ -21,20 +17,20 @@ export default Backbone.Model.extend({
 
     this.onFetchStart();
 
-    promises.push(fetch(`${api.endpoint}/persons/${id}?api_token=${api.token}`)
-      .then(this.toJSON)
-      .then(payload => this.set({ info: payload.data }))
-    );
+    promises.push(
+      fetch(`${api.endpoint}/persons/${id}?api_token=${api.token}`)
+        .then(this.toJSON)
+        .then(payload => this.set({ info: payload.data })));
 
-    promises.push(fetch(`${api.endpoint}/persons/${id}/deals/?api_token=${api.token}`)
-      .then(this.toJSON)
-      .then(payload => this.set({ deals: payload.data }))
-    );
+    promises.push(
+      fetch(`${api.endpoint}/persons/${id}/deals/?api_token=${api.token}`)
+        .then(this.toJSON)
+        .then(payload => this.set({ deals: payload.data })));
 
-    promises.push(fetch(`${api.endpoint}/persons/${id}/activities/?api_token=${api.token}`)
-      .then(this.toJSON)
-      .then(payload => this.set({ activities: payload.data }))
-    );
+    promises.push(
+      fetch(`${api.endpoint}/persons/${id}/activities/?api_token=${api.token}`)
+        .then(this.toJSON)
+        .then(payload => this.set({ activities: payload.data })));
 
     Promise.all(promises)
       .then(() => this.onFetchDone())
@@ -71,7 +67,5 @@ export default Backbone.Model.extend({
     return activities.find(activity => activity.id === id);
   },
 
-  reset() {
-    this.trigger('reset');
-  }
+  reset() { this.trigger('reset'); }
 });

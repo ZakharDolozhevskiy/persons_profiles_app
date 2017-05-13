@@ -36,6 +36,7 @@ export default Backbone.Collection.extend({
       this.defaultSelectedId = id;
     } else {
       let person = this.get(id);
+      this.resetPrevSelection();
       person && person.set({ isSelected: true });
     }
   },

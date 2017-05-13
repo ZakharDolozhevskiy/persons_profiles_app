@@ -12,7 +12,6 @@ export default Backbone.View.extend({
   render() {
     this.$el.html(this.template());
     this.renderWidgets();
-    this.trigger('render:done');
   },
 
   renderWidgets() {

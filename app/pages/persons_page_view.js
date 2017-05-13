@@ -1,6 +1,6 @@
 import Backbone from 'backbone';
 import HeaderView from '../layout/header_view';
-import PersonsView from '../persons/persons_view';
+import PersonsView from '../persons_list/persons_view';
 import PersonDetailsView from '../person_details/person_details_view';
 import template from './persons_page_template.pug';
 import './persons_page.css'

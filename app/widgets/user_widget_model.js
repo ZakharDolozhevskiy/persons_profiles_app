@@ -4,11 +4,7 @@ import { api } from '../config';
 export default Backbone.Model.extend({
   url: `${api.endpoint}/users?api_token=${api.token}`,
 
-  initialize() {
-    this.fetch();
-  },
+  initialize() { this.fetch(); },
 
-  parse(response) {
-    return response.data[0];
-  },
+  parse(response) { return response.data[0]; },
 });
