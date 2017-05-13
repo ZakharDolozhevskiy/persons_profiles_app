@@ -24,7 +24,7 @@ export default Backbone.View.extend({
       isLoading:  attr.isLoading,
       isFetchError: attr.fetchError
     };
-    console.log(attr.fetchError);
+
     this.$el.html(this.template(payload));
   },
 
