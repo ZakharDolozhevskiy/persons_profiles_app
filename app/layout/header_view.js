@@ -1,6 +1,7 @@
 import Backbone from 'backbone';
 import UserWidgetView from '../widgets/user_widget_view';
 import template from './header_template.pug';
+import './header.css';
 
 export default Backbone.View.extend({
   template: template,

@@ -1,6 +1,7 @@
 if user.activated
     img(src=user.icon_url class='user-widget-icon')
-    strong.user-name #{user.name}
-    span.user-company #{user.email}
+    div
+        strong.user-name #{user.name}
+        span.user-company TestCompanyName
 else
     span loading...

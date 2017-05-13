@@ -1,0 +1,33 @@
+.user_widget {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+.user_widget img {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+.user_widget div {
+  display: flex;
+  flex-direction: column;
+  height: 32px;
+  padding-right: 14px;
+  line-height: 1;
+  background: url('../assets/images/arrow.png') no-repeat center right;
+  cursor: pointer;
+}
+
+.user_widget .user-name {
+  color: #fff;
+  font-size: 16px;
+  padding: 2px 0 2px;
+}
+
+.user_widget .user-company {
+  color: #7d7d7d;
+  font-size: 11px;
+  padding-left: 3px;
+}

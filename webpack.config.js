@@ -28,7 +28,7 @@ const webpackConfig = {
     new HtmlWebpackPlugin({
       hash     : true,
       inject   : 'body',
-      favicon  : '',
+      favicon  : 'app/assets/images/favicon.png',
       filename : 'index.html',
       template : 'app/index.html'
     }),

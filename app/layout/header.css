@@ -1,0 +1,65 @@
+#header {
+  display: flex;
+  height: 46px;
+  line-height: 46px;
+  padding: 0 10px 0 5px;
+  background-color: #343434;
+  border-bottom: 1px solid #0f0f0f;
+}
+
+#header a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.header-logo {
+  width: 113px;
+  margin-right: 19px;
+  background: url("../assets/images/logo.png") no-repeat center;
+}
+
+.header-deals-widget {
+  padding-left: 41px;
+  margin-right: 26px;
+  background: url("../assets/images/deals-icon.png") no-repeat left;
+}
+
+.header-activities-widget {
+  position: relative;
+  padding-left: 43px;
+  margin-right: 27px;
+  background: url("../assets/images/calendar-icon.png") no-repeat left;
+}
+
+.header-activities-widget .date {
+  position: absolute;
+  left: 7px;
+  top: 20px;
+  color: #444;
+  font: 15px 'LucidaGrande-Bold';
+}
+
+.header-activities-widget .deals-amount {
+  position: absolute;
+  left: 18px;
+  top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 14px;
+  font: 9px 'LucidaGrande-Bold';
+  background-color: #dd0000;
+}
+
+.header-profile-widget {
+  width: 32px;
+  margin-right: 29px;
+  background: url("../assets/images/profile-icon.png") no-repeat center;
+}
+
+.header-coub-widget {
+  width: 32px;
+  background: url("../assets/images/coub-icon.png") no-repeat center;
+}
