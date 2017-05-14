@@ -23,10 +23,10 @@ else
                     span.value #{person.open_deals_count}
                 li
                     strong.title Next activity
-                    span.value #{getNextActivity(person.next_activity_id)}
+                    span.value #{getActivityDate(person.next_activity_id)}
                 li
                     strong.title Last activity
-                    span.value #{getLastActivity(person.last_activity_id)}
+                    span.value #{getActivityDate(person.last_activity_id)}
             div.person-details-deals
                 span.inner-deals-title Deals
                 ul

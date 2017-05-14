@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import template from './template.pug';
+import template from './person_template.pug';
 import './person.css';
 
 export default Backbone.View.extend({

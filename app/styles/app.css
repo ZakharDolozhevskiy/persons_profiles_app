@@ -2,6 +2,10 @@
 @import "fonts.css";
 @import "spinner.css";
 
+a {
+  cursor: pointer;
+}
+
 body {
   background:
     url('../assets/images/p.png') no-repeat center,

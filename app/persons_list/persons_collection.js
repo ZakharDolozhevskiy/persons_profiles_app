@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import PersonModel from '../person/person_model';
+import PersonModel from './person_model';
 import { api } from '../config';
 
 export default Backbone.Collection.extend({

@@ -8,28 +8,27 @@ export default Backbone.View.extend({
 
   template: template,
 
+  dataToRender: {},
+
   initialize() {
     this.listenTo(this.model, 'fetch:start', this.render);
     this.listenTo(this.model, 'fetch:done', this.render);
     this.listenTo(this.model, 'fetch:error', this.render);
     this.listenTo(this.model, 'change:personId', this.render);
     this.listenTo(this.model, 'reset', this.reset);
+
+    this.dataToRender.getActivityDate = this.getActivityDate.bind(this);
+    this.dataToRender.formatDate = this.formatDate;
   },
 
   render() {
-    let attr = this.model.attributes;
+    let attrs = this.model.attributes;
+    this.dataToRender.deals = attrs.deals;
+    this.dataToRender.person = attrs.info;
+    this.dataToRender.isLoading = attrs.isLoading;
+    this.dataToRender.isFetchError = attrs.fetchError;
 
-    let payload = {
-      person: attr.info,
-      deals: attr.deals,
-      formatDate: this.formatDate,
-      getLastActivity: this.getLastActivity.bind(this),
-      getNextActivity: this.getNextActivity.bind(this),
-      isLoading:  attr.isLoading,
-      isFetchError: attr.fetchError
-    };
-
-    this.$el.html(this.template(payload));
+    this.$el.html(this.template(this.dataToRender));
   },
 
   reset() {
@@ -40,13 +39,8 @@ export default Backbone.View.extend({
     return moment(date).format('MMMM DD, YYYY');
   },
 
-  getLastActivity(activityId) {
+  getActivityDate(activityId) {
     let activity = this.model.findActivityById(activityId);
     return `${activity.subject} ${moment(activity.due_date).fromNow()}`;
-  },
-
-  getNextActivity(activityId) {
-    let activity = this.model.findActivityById(activityId);
-    return `${activity.subject} ${moment(activity.due_date).fromNow()}`;
-  },
+  }
 });

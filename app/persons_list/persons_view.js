@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import PersonView from '../person/person_view';
+import PersonView from './person_view';
 
 export default Backbone.View.extend({
   el: '#right_nav',
